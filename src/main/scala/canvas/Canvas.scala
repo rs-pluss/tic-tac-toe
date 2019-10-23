@@ -1,6 +1,6 @@
 package canvas
 
-import canvas.CellStatus.CellStatus
+import canvas.TicTacEnum.TicTacEnum
 
 /**
   * canvas of game
@@ -12,18 +12,19 @@ class Canvas {
   private val size = 3
 
   /**
-    * implementation of canvas - two dimensional array of [[canvas.CellStatus]]
+    * implementation of canvas - two dimensional array of [[TicTacEnum]]
     */
-  private val table: Array[Array[CellStatus]] = Array.fill(size, size)(CellStatus.EMPTY)
+
+  private val table = Array.ofDim[TicTacEnum](size, size)
 
   /**
-    * return status of cell [[canvas.CellStatus]]
+    * return status of cell [[TicTacEnum]]
     *
     * @param x column number
     * @param y raw number
     * @return status of cell
     */
-  def getCellStatus(x: Int, y: Int): CellStatus = table(x)(y)
+  def getCellStatus(x: Int, y: Int): TicTacEnum = table(x)(y)
 
   /**
     * set cell status
@@ -32,6 +33,9 @@ class Canvas {
     * @param y      raw number
     * @param status new status of cell
     */
-  def setCellStatus(x: Int, y: Int, status: CellStatus): Unit = table(x)(y) = status
+  def setCellStatus(x: Int, y: Int, status: TicTacEnum): Unit = table(x)(y) = status
 
+  def checkLinesNearCell(x: Int, y: Int): Boolean = {
+    false
+  }
 }

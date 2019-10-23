@@ -1,7 +1,11 @@
-import canvas.{Canvas, CellStatus}
+import game.Game
+
+import scala.io.StdIn
+
 object TicTacToe extends App {
-  val canvas = new Canvas()
-  canvas.setCellStatus(1,1,CellStatus.TAC)
-  val cell = canvas.getCellStatus(1,1)
-  println(cell)
+  val command = StdIn.readLine()
+  if (command == "start") {
+    val game = new Game(2)
+    val result = game.play()
+  }
 }
