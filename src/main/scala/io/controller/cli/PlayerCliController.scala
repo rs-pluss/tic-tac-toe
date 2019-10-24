@@ -1,25 +1,45 @@
 package io.controller.cli
 
+import canvas.{Canvas, TicTacEnum}
+import game.player.Player
 import io.controller.PlayerController
 
 import scala.io.StdIn
 
 /**
-  * Class for handle input from player in game
+  * Implements user input from player cli
   */
 class PlayerCliController extends PlayerController {
-  def getCellAddress: (Int, Int) = {
+  override def getCellAddress: (Int, Int) = {
     val command = StdIn.readLine()
     try {
       parseCellAddress(command)
     } catch {
       case ex: NumberFormatException => {
         //todo text
-        print("Cell address must be specified as <x y>")
+        println("Cell address must be specified as <x y>")
         getCellAddress
       }
     }
   }
+
+  def showTable(canvas: Canvas): Unit = {
+    for (i <- 0 until canvas.columns) {
+      for (j <- 0 until canvas.rows) {
+        canvas.getCellStatus(i, j) match {
+          case TicTacEnum.TIC => print("x\t")
+          case TicTacEnum.TAC => print("o\t")
+          case null => print("_\t")
+        }
+      }
+      println()
+    }
+  }
+
+  def askTurn(player: Player): Unit = {
+    println(s"${player.name}, please select cell")
+  }
+
 
   /**
     * Parse String command and get cell address
@@ -32,7 +52,7 @@ class PlayerCliController extends PlayerController {
     if (test.length == 2) {
       (test(0).toInt, test(1).toInt)
     } else {
-      throw NumberFormatException
+      throw new NumberFormatException
     }
   }
 

@@ -7,18 +7,23 @@ import canvas.TicTacEnum.TicTacEnum
   */
 class Canvas {
   /**
-    * canvas size
+    * number of columns in canvas
     */
-  private val size = 3
+  val columns = 3
+
+  /**
+    * Number of rows in canvas
+    */
+  val rows = 3
   /**
     * Maximum size of desc
     */
-  val maxTurns:Int = size*size
+  val maxTurns: Int = columns * rows
   /**
     * implementation of canvas - two dimensional array of [[TicTacEnum]]
     */
 
-  private val table = Array.ofDim[TicTacEnum](size, size)
+  private val table = Array.ofDim[TicTacEnum](columns, columns)
 
   /**
     * return status of cell [[TicTacEnum]]
@@ -62,7 +67,7 @@ class Canvas {
     * @return true if cell is accessible, else false
     */
   def validateAddress(x: Int, y: Int): Boolean = {
-    false
+    true
   }
 
 }

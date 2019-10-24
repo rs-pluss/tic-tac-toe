@@ -13,5 +13,5 @@ abstract class Player(val name: String, val role: TicTacEnum) {
     *
     * @return cell address for fill (x,y)
     */
-  abstract def chooseCell(): (Int, Int)
+  def chooseCell(): (Int, Int)
 }

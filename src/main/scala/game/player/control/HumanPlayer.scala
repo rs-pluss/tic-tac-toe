@@ -18,8 +18,4 @@ class HumanPlayer(name: String, role: TicTacEnum) extends Player(name: String, r
     inputController.getCellAddress
   }
 
-
-  def parseCommand(command: String): (Int, Int) = {
-
-  }
 }
