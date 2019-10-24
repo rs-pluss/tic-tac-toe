@@ -5,7 +5,7 @@ import canvas.TicTacEnum.TicTacEnum
 import game.player.Player
 
 class AiPlayer(name:String, role:TicTacEnum)  extends Player(name:String, role:TicTacEnum){
-  def chooseCell(canvas: Canvas): (Int, Int) = {
+  def chooseCell(): (Int, Int) = {
     (1,1)
   }
 }
