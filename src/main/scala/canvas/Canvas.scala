@@ -10,7 +10,10 @@ class Canvas {
     * canvas size
     */
   private val size = 3
-  val maxTurns = size*size
+  /**
+    * Maximum size of desc
+    */
+  val maxTurns:Int = size*size
   /**
     * implementation of canvas - two dimensional array of [[TicTacEnum]]
     */

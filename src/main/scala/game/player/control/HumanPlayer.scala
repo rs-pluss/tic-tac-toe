@@ -2,8 +2,8 @@ package game.player.control
 
 import canvas.TicTacEnum.TicTacEnum
 import game.player.Player
-
-import scala.io.StdIn
+import io.controller.PlayerController
+import io.controller.cli.PlayerCliController
 
 /**
   * Player with human control
@@ -12,17 +12,13 @@ import scala.io.StdIn
   * @param role player role [[TicTacEnum]]
   */
 class HumanPlayer(name: String, role: TicTacEnum) extends Player(name: String, role: TicTacEnum) {
-  def chooseCell(): (Int, Int) = {
-    val command = StdIn.readLine()
-    parseCommand(command)
+  val inputController :PlayerController = new PlayerCliController
+
+  override def chooseCell(): (Int, Int) = {
+    inputController.getCellAddress
   }
 
-  /**
-    * Parse String command and get cell address
-    *
-    * @param command input command
-    * @return cell address (x,y)
-    */
+
   def parseCommand(command: String): (Int, Int) = {
 
   }
