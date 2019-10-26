@@ -13,7 +13,7 @@ class Turn(val player: Player) {
 
 
   def makeTurn(canvas: Canvas): (Int, Int) = {
-    inputController.showTable(canvas)
+    inputController.showGameStatus(canvas)
     inputController.askTurn(player)
     var isCellAllowed: Boolean = false
     do {

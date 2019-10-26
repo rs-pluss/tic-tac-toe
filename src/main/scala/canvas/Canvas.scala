@@ -55,8 +55,15 @@ class Canvas {
     * @return true, if this cell in line of cells, else false
     */
   def checkLinesNearCell(x: Int, y: Int): Boolean = {
+//    val status = getCellStatus(x, y)
+//    var isLineFull = true
+//    for(i <- 0 until columns) {
+//        if (getCellStatus(i, y)!=status) {
+//          isLineFull=false
+//
+//        }
+//    }
     false
-
   }
 
   /**
@@ -67,7 +74,17 @@ class Canvas {
     * @return true if cell is accessible, else false
     */
   def validateAddress(x: Int, y: Int): Boolean = {
-    true
+    if (x >= columns) {
+      false
+    }
+    if (y >= rows) {
+      false
+    }
+    if (getCellStatus(x, y) == null) {
+      true
+    } else {
+      false
+    }
   }
 
 }

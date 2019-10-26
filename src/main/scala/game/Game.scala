@@ -10,6 +10,11 @@ import io.controller.cli.PlayerCliController
 
 import scala.collection.mutable
 
+/**
+  * Main class of game
+  *
+  * @param players number of players in game
+  */
 class Game(players: Int) {
   private val canvas = new Canvas()
   private val turns: mutable.Set[Turn] = new mutable.LinkedHashSet[Turn]()
@@ -17,7 +22,7 @@ class Game(players: Int) {
   val inputController: PlayerController = new PlayerCliController
 
 
-  def initPlayers(players: Int): (Player, Player) = {
+  private def initPlayers(players: Int): (Player, Player) = {
     players match {
       case 1 =>
         //todo test
@@ -34,12 +39,13 @@ class Game(players: Int) {
 
   def play(): TicTacEnum = {
     var isWin = false
-    while (!isWin || turns.size == canvas.maxTurns) {
+    while (!isWin && turns.size != canvas.maxTurns) {
       val currentPlayer = if (turns.isEmpty || turns.last.player.role == TicTacEnum.TAC) ticPlayer else tacPlayer
       val turn = new Turn(currentPlayer)
       val (x, y) = turn.makeTurn(canvas)
       isWin = canvas.setCellAndCheckLines(x, y, currentPlayer.role)
       turns += turn
+      println(turns.size)
     }
     if (isWin) turns.last.player.role else null
   }

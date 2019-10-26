@@ -23,7 +23,12 @@ class PlayerCliController extends PlayerController {
     }
   }
 
-  def showTable(canvas: Canvas): Unit = {
+  /**
+    * Show current game status
+    *
+    * @param canvas canvas of game
+    */
+  def showGameStatus(canvas: Canvas): Unit = {
     for (i <- 0 until canvas.columns) {
       for (j <- 0 until canvas.rows) {
         canvas.getCellStatus(i, j) match {
@@ -36,13 +41,18 @@ class PlayerCliController extends PlayerController {
     }
   }
 
+  /**
+    * Ask player about turn
+    *
+    * @param player current player
+    */
   def askTurn(player: Player): Unit = {
     println(s"${player.name}, please select cell")
   }
 
 
   /**
-    * Parse String command and get cell address
+    * Parse String command and get cell address (numeration of cells starts from 1)
     *
     * @param command input command
     * @return cell address (x,y)
@@ -50,7 +60,7 @@ class PlayerCliController extends PlayerController {
   def parseCellAddress(command: String): (Int, Int) = {
     val test = command.split(" ")
     if (test.length == 2) {
-      (test(0).toInt, test(1).toInt)
+      (test(0).toInt - 1, test(1).toInt - 1)
     } else {
       throw new NumberFormatException
     }

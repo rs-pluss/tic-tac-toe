@@ -14,7 +14,7 @@ trait PlayerController {
     */
   def getCellAddress: (Int, Int)
 
-  def showTable(canvas:Canvas)
+  def showGameStatus(canvas:Canvas)
 
   def askTurn(player:Player)
 }
